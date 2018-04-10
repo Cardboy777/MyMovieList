@@ -1,0 +1,10 @@
+DJango ( Used as a Basis for the Server of our Web Application )
+	Documentation - https://docs.djangoproject.com/en/2.0/
+Bootstrap ( Used for Making HTML Files for adaptive Usage between Mobile and Desktop Device)
+	Documentation - https://getbootstrap.com/docs/4.1/getting-started/introduction/
+Rotten Tomatoes API ( Used to gather external Information about Movies)
+	Documentation -
+Movies DB Api (Used to gather a database of movies to act as and provide breif synopsis and meta data)
+	Documentation - 
+IMDB Api ( Used for external information include review Scores)
+	Documentation - 
