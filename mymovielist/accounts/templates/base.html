@@ -7,13 +7,41 @@
     {% endblock %}
   </head>
   <body>
-    <h1>
-      This could be a navigation bar
-    </h1>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        XD Look at that B emoji
+      </a>
+    </nav>
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Movie Search" aria-label="Movie Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
     {% block body %}
     {% endblock %}
-    <h1>
-      This could be a copyrigh or basic info bar
-    </h1>
+    <footer class="page-footer font-small blue pt-4 mt-4">
+      <div class="container-fluid text-center text-md-left">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="text-uppercase">MovieDB</h5>
+            <img src="https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" height="55" weight="55" alt="MovieDB">
+            <p>This product uses the TMBd API but is not endorsed or certified by TMDb.</p>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-uppercase">Links</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="/about">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright py-3 text-center">
+        © 2018 Copyright:David Carr, Reid Kippenbrock, Daniel Macke
+      </div>
+    </footer>
   </body>
 </html>
