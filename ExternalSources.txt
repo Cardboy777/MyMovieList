@@ -5,6 +5,7 @@ Bootstrap ( Used for Making HTML Files for adaptive Usage between Mobile and Des
 Rotten Tomatoes API ( Used to gather external Information about Movies)
 	Documentation -
 Movies DB Api (Used to gather a database of movies to act as and provide breif synopsis and meta data)
-	Documentation - 
+	Documentation - https://www.themoviedb.org/documentation/api
+	API Key - dd1efeb24fd2185a41514dc64bb9ac02
 IMDB Api ( Used for external information include review Scores)
 	Documentation - 
