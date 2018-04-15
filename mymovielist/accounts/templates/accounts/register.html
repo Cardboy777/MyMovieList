@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block head %}
+  <title>MML:Register</title>
+{% endblock %}
+{% block body %}
+  <div class="container">
+    <h1 class="text-center text-uppercase">
+      Register New User
+    </h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+        <button class="btn-outline-success" type="submit">Register</button>
+    </form>
+  </div>
+{% endblock %}
