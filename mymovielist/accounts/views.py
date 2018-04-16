@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from accounts.forms import RegistrationForm, EditProfileForm
 from accounts.models import UserProfile
 from django.contrib.auth.models import User
