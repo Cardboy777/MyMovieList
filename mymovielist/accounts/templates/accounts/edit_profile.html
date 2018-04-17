@@ -8,8 +8,7 @@
   <p></p>
   <form method="post">
     {% csrf_token %}
-    {{ userform.as_ul }}
-    {{ profileform.as_ul }}
+    {{ form.as_p }}
     <button class="btn btn-outline-success">
       Save
     </button>
