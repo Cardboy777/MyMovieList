@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from accounts.models import UserProfile
 
 
 class RegistrationForm(UserCreationForm):
@@ -27,9 +28,21 @@ class RegistrationForm(UserCreationForm):
             user.save()
 
         return user
+<<<<<<< HEAD
+class EditUserForm(UserChangeForm):
+    def __init__(self, *args, **kw):
+        super(UserChangeForm, self).__init__(*args,**kw)
+        self.fields.keyOrder = [
+            'first_name',
+            'last_name',
+            'email',
+            'password'
+        ]
+=======
 
 
 class EditProfileForm(UserChangeForm):
+>>>>>>> 94a88021ae16388ad939060baa75f0eddeb04a00
     class Meta:
         model = User
         fields = {
@@ -37,4 +50,13 @@ class EditProfileForm(UserChangeForm):
             'last_name',
             'email',
             'password'
+        }
+class EditProfileForm(forms.ModelForm):
+
+    class Meta:
+        model=UserProfile
+        fields = {
+            'age',
+            'city',
+            'description'
         }
