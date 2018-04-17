@@ -28,7 +28,6 @@ class RegistrationForm(UserCreationForm):
             user.save()
 
         return user
-<<<<<<< HEAD
 class EditUserForm(UserChangeForm):
     def __init__(self, *args, **kw):
         super(UserChangeForm, self).__init__(*args,**kw)
@@ -38,11 +37,6 @@ class EditUserForm(UserChangeForm):
             'email',
             'password'
         ]
-=======
-
-
-class EditProfileForm(UserChangeForm):
->>>>>>> 94a88021ae16388ad939060baa75f0eddeb04a00
     class Meta:
         model = User
         fields = {
