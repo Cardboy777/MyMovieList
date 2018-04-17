@@ -5,8 +5,7 @@ from django.shortcuts import render, HttpResponse
 def about(request):
     return render(request, 'homepage/about.html')
 
-def mylist(request) :
-    return render(request, 'list/mylist.html')
+
 
 
 def home(request):
