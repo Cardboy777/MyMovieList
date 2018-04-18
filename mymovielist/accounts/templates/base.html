@@ -42,10 +42,9 @@
     </div>
     <div class="container-fluid" style="background-color: #99ff99;">
       <nav class="navbar navbar-light" style="background-color: #99ff99;">
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Movie Search" aria-label="Movie Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <form class="form-inline" method="GET" action="{% url 'search_url' %}">
+          <input type="text" class ="form-control" name="search_box" placeholder="Movie Search" />
+          <button class="btn btn-outline-success" type="submit">Search</button>
       </nav>
     </div>
     {% block body %}
