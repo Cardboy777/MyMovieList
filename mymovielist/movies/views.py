@@ -16,7 +16,7 @@ def movies(request):
         movie_companies = movie_info["production_companies"]
         movie_release_date = movie_info["release_date"]
         movie_trailer = ""
-        for f in movie.videos():
+        for f in movie.videos()["results"]:
             if f["site"] == "YouTube":
                 movie_trailer = "https://www.youtube.com/watch?v=" + f["key"]
 
