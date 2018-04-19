@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/favicon.ico'%}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
@@ -13,7 +15,9 @@
   <body>
     <div class="container-fluid" style="background-color: #cc99ff;">
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #cc99ff;">
-        <a class="navbar-brand" href="/">MML: My Movie list
+        <a class="navbar-brand" href="/">
+            {% load static %}
+            <image src="{% static 'images/titlebanner.png' %}"/>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         </a>
           <span class="navbar-toggler-icon"></span>
