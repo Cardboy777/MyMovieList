@@ -18,7 +18,7 @@ def movies(request):
         movie_trailer = ""
         for f in movie.videos()["results"]:
             if f["site"] == "YouTube":
-                movie_trailer = "https://www.youtube.com/watch?v=" + f["key"]
+                movie_trailer = "https://youtube.com/embed/" + f["key"]
 
         movie_homepage = movie_info["homepage"]
         args = {'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
