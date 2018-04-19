@@ -1,6 +1,8 @@
 {%extends 'base.html'%}
 {%block body%}
   <div class="container">
+    {% load static %}
+    <image src="{% static 'images/logo.png' %}"/>
     <h1>Welcome to My Movie List</h1>
     <p>For new user make sure to begin by making an account by clicking the Register button in the banner above</p>
     <p>For returning users make sure to sign in to your account by clicking the Login button in the banner above</p>
