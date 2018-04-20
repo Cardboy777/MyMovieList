@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 import tmdbsimple as tmdb
+from movies.models import MovieReview
 
 tmdb.API_KEY = 'dd1efeb24fd2185a41514dc64bb9ac02'
 
@@ -26,9 +27,10 @@ def movies(request):
                 movie_director = f["name"]
                 movie_director_pic = f["profile_path"]
         movie_homepage = movie_info["homepage"]
+        movie_reviews =  MovieReview.objects.filter(movie_id=movie_id)
         args = {'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
                 'companies': movie_companies, 'release_date': movie_release_date, 'trailer': movie_trailer,
-                'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,}
+                'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,'reviews':movie_reviews,}
     return render(request, 'movies/movies.html', args)
 
 
