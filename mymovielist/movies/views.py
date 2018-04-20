@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 import tmdbsimple as tmdb
 from movies.models import MovieReview
+from movies.forms import write_review
 
 tmdb.API_KEY = 'dd1efeb24fd2185a41514dc64bb9ac02'
 
@@ -29,7 +30,7 @@ def movies(request):
                 movie_director_pic = f["profile_path"]
         movie_homepage = movie_info["homepage"]
         movie_reviews =  MovieReview.objects.filter(movie_id=movie_id)
-        args = {'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
+        args = {'id':movie_id,'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
                 'companies': movie_companies, 'release_date': movie_release_date, 'trailer': movie_trailer,
                 'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,'reviews':movie_reviews,}
     return render(request, 'movies/movies.html', args)
@@ -55,3 +56,26 @@ def search(request):
         return render(request, 'movies/search.html', args)
     else:
         return redirect('/')
+
+def write_review_view(request):
+    if request.method == 'POST':
+        form = write_review(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            movie_id = request.POST.get('movie_id')
+            movie = tmdb.Movies(movie_id)
+            movie_info = movie.info()
+            movie_title = movie_info["title"]
+            review.user=request.user
+            review.movie_id = movie_id
+            review.movie_title = movie_title
+            review.save()
+            text = form.cleaned_data['review']
+            return redirect('/account/profile/')
+        args = {'form':form, 'text': text}
+        return render(request,'movies/write_review.html',args)
+    else:
+        form = write_review()
+        movie_id = request.GET.get('movie_id')
+        args = {'form':form,'id':movie_id}
+        return render(request, 'movies/write_review.html',args)

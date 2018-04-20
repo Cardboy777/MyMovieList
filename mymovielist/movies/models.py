@@ -12,7 +12,7 @@ class MovieReview(models.Model):
     rating = models.IntegerField(
         default=0,
         validators=[
-            MaxValueValidator(5),
+            MaxValueValidator(100),
             MinValueValidator(0)
         ]
     )

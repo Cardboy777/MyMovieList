@@ -41,11 +41,11 @@
       {%for review in reviews%}
       <div class="container" style="border:1px solid #cecece;">
         <a href="/movies/?movie_id={{review.movie_id}}" >
-          <h4 class="text-md-left text-uppercase text-underline"> {{review.movie_title}}</h4>
         </a>
+        <h4 class="text-md-left text-uppercase text-underline"> {{review.movie_title}}</h4>
         <blockquote>
           <p>{{review.review}}</p>
-          <footer>{{review.rating}}/5</footer>
+          <footer>{{review.rating}}/100</footer>
         </blockquote>
       </div>
       {%endfor%}

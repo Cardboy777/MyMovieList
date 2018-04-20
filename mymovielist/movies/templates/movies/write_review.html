@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>MML:Write Review</title>
+{% endblock %}
+{% block body %}
+  <div class="container">
+    <div class="jumbotron">
+      <h1> Write your Review </h1>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name=movie_id value = "{{ id }}"
+        {{form.as_ul}}
+        <button type = "submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
