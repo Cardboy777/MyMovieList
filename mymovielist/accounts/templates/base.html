@@ -13,11 +13,11 @@
     {% endblock %}
   </head>
   <body>
-    <div class="container-fluid" style="background-color: #cc99ff;">
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #cc99ff;">
+    <div class="container-fluid" style="background-color: #4f42ff;">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4f42ff;">
         <a class="navbar-brand" href="/">
             {% load static %}
-            <image src="{% static 'images/titlebanner.png' %}" height=50/>
+            <image src="{% static 'images/titlebanner.png' %}" height=40/>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         </a>
           <span class="navbar-toggler-icon"></span>
@@ -44,8 +44,8 @@
         </div>
       </nav>
     </div>
-    <div class="container-fluid" style="background-color: #99ff99;">
-      <nav class="navbar navbar-light" style="background-color: #99ff99;">
+    <div class="container-fluid" style="background-color: #4339d4;">
+      <nav class="navbar navbar-light" style="background-color: #4339d4;">
         <form class="form-inline" method="GET" action="{% url 'search_url' %}">
           <input type="text" class ="form-control" name="search_box" placeholder="Movie Search" />
           <button class="btn btn-outline-success" type="submit">Search</button>
@@ -53,17 +53,16 @@
     </div>
     {% block body %}
     {% endblock %}
-    <footer class="page-footer fixed-bottom font-small blue pt-4 mt-4" style="background-color: #cc99ff;">
+    <footer class="page-footer fixed-bottom font-small blue pt-2 mt-4" style="background-color: #6e6e6e;">
       <div class="container-fluid text-center text-md-left">
         <div class="row">
           <div class="col-md-6">
-            <h5 class="text-uppercase">MovieDB</h5>
-            <img src="https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" height="55" weight="55" alt="MovieDB">
-            <p>This product uses the TMBd API but is not endorsed or certified by TMDb.</p>
+            <img src="https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" height="40" weight="55" alt="Movie DB">
+            <h6 style="font-size: 8pt; ">This product uses the TMBd API but is not endorsed or certified by TMDb.</h6>
           </div>
           <div class="col-md-6">
-            <h5 class="text-uppercase">Links</h5>
-            <ul class="list-unstyled">
+            <h5 class="text-uppercase" style="font-size: 10pt; ">Links</h5>
+            <ul class="list-unstyled" style="font-size: 8pt; ">
               <li>
                 <a href="/about">About</a>
               </li>
@@ -71,8 +70,8 @@
           </div>
         </div>
       </div>
-      <div class="footer-copyright py-3 text-center">
-        © 2018 Copyright:David Carr, Reid Kippenbrock, Daniel Macke
+      <div class="footer-copyright py-3 text-center margin-sm" style="background-color: #585858">
+        <h6 style="font-size: 8pt; ">© 2018 Copyright: David Carr, Reid Kippenbrock, Daniel Macke</h6>
       </div>
     </footer>
   </body>
