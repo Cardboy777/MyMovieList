@@ -51,9 +51,11 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
       </nav>
     </div>
-    {% block body %}
-    {% endblock %}
-    <footer class="page-footer fixed-bottom font-small blue pt-4 mt-4" style="background-color: #cc99ff;">
+    <main role="main" class="container">
+      {% block body %}
+      {% endblock %}
+    </main>
+    <footer class="footer page-footer font-small blue pt-4 mt-4" style="background-color: #cc99ff;">
       <div class="container-fluid text-center text-md-left">
         <div class="row">
           <div class="col-md-6">

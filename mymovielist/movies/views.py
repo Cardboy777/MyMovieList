@@ -16,14 +16,19 @@ def movies(request):
         movie_companies = movie_info["production_companies"]
         movie_release_date = movie_info["release_date"]
         movie_trailer = ""
+        movie_director = ""
+        movie_director_pic = ""
         for f in movie.videos()["results"]:
             if f["site"] == "YouTube":
                 movie_trailer = "https://youtube.com/embed/" + f["key"]
-
+        for f in movie.credits()["crew"]:
+            if f["job"] == "Director" :
+                movie_director = f["name"]
+                movie_director_pic = f["profile_path"]
         movie_homepage = movie_info["homepage"]
         args = {'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
                 'companies': movie_companies, 'release_date': movie_release_date, 'trailer': movie_trailer,
-                'homepage': movie_homepage}
+                'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,}
     return render(request, 'movies/movies.html', args)
 
 
