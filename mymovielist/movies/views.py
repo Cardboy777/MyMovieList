@@ -30,7 +30,9 @@ def movies(request):
 def search(request):
     search_query = request.GET.get('search_box')
     if search_query:
-        args = {'search': search_query}
+        search = tmdb.Search()
+        response = search.movie(query = search_query)
+        args = {'search': response}
         return render(request, 'movies/search.html', args)
     else:
         return redirect('/')
