@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from accounts.forms import RegistrationForm, EditProfileForm, EditUserForm
 from accounts.models import UserProfile
+from movies.models import MovieReview
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 
@@ -27,7 +28,8 @@ def register(request):
 
 
 def view_profile(request):
-    args = {'User': request.user}
+    movie_reviews = MovieReview.objects.filter(user=request.user)
+    args = {'User': request.user,'reviews': movie_reviews}
     return render(request, 'accounts/profile.html', args)
 
 
