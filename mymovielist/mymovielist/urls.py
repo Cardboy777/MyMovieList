@@ -27,6 +27,7 @@ urlpatterns = [
     path('account/',include('accounts.urls')),
     path('about/', views.about),
     path('movies/', include('movies.urls')),
+    path('guccigang/', views.guccigang),
 ]
 
 if settings.DEBUG:

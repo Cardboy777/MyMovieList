@@ -10,3 +10,6 @@ def about(request):
 
 def home(request):
     return render(request, 'homepage/home.html')
+
+def guccigang(request):
+    return render(request, 'homepage/guccigang.html')
