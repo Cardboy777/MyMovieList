@@ -19,8 +19,9 @@ def movies(request):
         movie_director = ""
         movie_director_pic = ""
         for f in movie.videos()["results"]:
-            if f["site"] == "YouTube":
+            if (f["site"] == "YouTube" and f["type"] == "Trailer"):
                 movie_trailer = "https://youtube.com/embed/" + f["key"]
+                break;
         for f in movie.credits()["crew"]:
             if f["job"] == "Director" :
                 movie_director = f["name"]
