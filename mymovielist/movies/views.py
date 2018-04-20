@@ -36,9 +36,19 @@ def search(request):
     search_query = request.GET.get('search_box')
     if search_query:
         search = tmdb.Search()
-        response = search.movie(query = search_query)
-        print(search.results)
-        args = {'results': search.results}
+        x = 2
+        result = search.movie(query = search_query, page = 1)
+        num = search.total_pages
+        print(num)
+        #print(search.results)
+        final = search.results
+        while x <= 5:
+            print(x)
+            search.movie(query = search_query, page = x)
+            #print(search.results)
+            final.extend(search.results)
+            x = x + 1
+        args = {'results': final}
         return render(request, 'movies/search.html', args)
     else:
         return redirect('/')
