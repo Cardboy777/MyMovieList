@@ -26,19 +26,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" href="/" style="color: #1c1857">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/account/login/">Login</a>
+              <a class="nav-link" href="/account/login/" style="color: #1c1857">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/account/logout/">Logout</a>
+              <a class="nav-link" href="/account/logout/" style="color: #1c1857">Logout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/account/register">Register</a>
+              <a class="nav-link" href="/account/register" style="color: #1c1857">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/account/profile">Profile</a>
+              <a class="nav-link" href="/account/profile" style="color: #1c1857">Profile</a>
             </li>
           </ul>
         </div>
@@ -53,12 +53,14 @@
       </nav>
     </div>
     <main>
-    <div class="content">
+    <div class="content" style="padding-bottom: 120px">
+
     {% block body %}
     {% endblock %}
+
     </div>
     </main>
-    <footer class="footer page-footer font-small blue pt-2 mt-4" style="background-color: #6e6e6e;">
+    <footer class="footer page-footer fixed-bottom font-small pt-2 mt-4" style="background-color: #6e6e6e; height: 110px">
       <div class="container-fluid text-center text-md-left">
         <div class="row">
           <div class="col-md-6">
@@ -69,7 +71,7 @@
             <h5 class="text-uppercase" style="font-size: 10pt; ">Links</h5>
             <ul class="list-unstyled" style="font-size: 8pt; ">
               <li>
-                <a href="/about">About</a>
+                <a href="/about" style="color: #1a1a1a">About</a>
               </li>
             </ul>
           </div>

@@ -5,15 +5,17 @@
 
 {% block body %}
 <div class="container-fluid">
-  <p></p>
-  <form method="post">
-    {% csrf_token %}
-    {{ userform.as_ul }}
-    {{ profileform.as_ul }}
-    <button class="btn btn-outline-success">
-      Save
-    </button>
-  </form>
-  <p></p>
+  <div class="jumbotron">
+    <p></p>
+    <form method="post">
+      {% csrf_token %}
+      {{ userform.as_ul }}
+      {{ profileform.as_ul }}
+      <button class="btn btn-outline-success">
+        Save
+      </button>
+    </form>
+    <p></p>
+  </div>
 </div>
 {% endblock %}

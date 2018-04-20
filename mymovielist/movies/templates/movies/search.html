@@ -21,11 +21,16 @@ tr:nth-child(even) {
     background-color: #f2f2f2
 }
 
+.jumbotron{
+    padding: 10px;
+}
+
 
 </style>
 {% endblock %}
 {% block body %}
   <div class= "container-fluid">
+    <div class="jumbotron">
       <p><strong>Click the headers to sort the table.</strong></p>
       <p>The first time you click, the sorting direction is ascending (A to Z).</p>
       <p>Click again, and the sorting direction will be descending (Z to A):</p>
@@ -42,7 +47,7 @@ tr:nth-child(even) {
 
           {% for result in results %}
             <tr>
-                <td><a href="/movies/?movie_id={{ result.id }}"><img src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}"></a></td>
+                <td><a href="/movies/?movie_id={{ result.id }}"><img src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" height="120px"></a></td>
                 <td>{{ result.title }}</td>
                 <td>{{ result.release_date }}</td>
                 <td>{{ result.popularity }}</td>
@@ -50,7 +55,6 @@ tr:nth-child(even) {
           {% endfor %}
         </table>
       </div>
-
       <script>
       function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -129,5 +133,6 @@ tr:nth-child(even) {
         }
       }
       </script>
+    </div>
   </div>
 {% endblock %}
