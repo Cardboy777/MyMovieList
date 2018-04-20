@@ -9,14 +9,22 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = {
+        fields = (
             'username',
             'first_name',
             'last_name',
             'email',
             'password1',
             'password2',
-        }
+        )
+        field_order = (
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'password1',
+            'password2',
+        )
 
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
@@ -39,18 +47,29 @@ class EditUserForm(UserChangeForm):
         ]
     class Meta:
         model = User
-        fields = {
+        fields = (
             'first_name',
             'last_name',
             'email',
             'password'
-        }
+        )
+        field_order = (
+            'first_name',
+            'last_name',
+            'email',
+            'password'
+        )
 class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model=UserProfile
-        fields = {
+        fields = (
             'age',
             'city',
             'description'
-        }
+        )
+        field_order = (
+            'age',
+            'city',
+            'description'
+        )
