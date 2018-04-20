@@ -11,6 +11,22 @@
     {% block head %}
     <title>MML</title>
     {% endblock %}
+  <style>
+    body {
+      background-color: #252525;
+    }
+    .jumbotron {
+        margin: 10px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .footer{
+        color:aliceblue;
+    }
+
+  </style>
+
   </head>
   <body>
     <div class="container-fluid" style="background-color: #4f42ff;">
@@ -48,7 +64,7 @@
       <nav class="navbar navbar-light" style="background-color: #4339d4;">
         <form class="form-inline" method="GET" action="{% url 'search_url' %}">
           <input type="text" class ="form-control" name="search_box" placeholder="Movie Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-default" type="submit">Search</button>
         </form>
       </nav>
     </div>
@@ -60,24 +76,28 @@
 
     </div>
     </main>
-    <footer class="footer page-footer fixed-bottom font-small pt-2 mt-4" style="background-color: #6e6e6e; height: 110px">
+    <footer class="footer page-footer fixed-bottom font-small pt-2 mt-4" style="background-color: #181818; height: 110px">
       <div class="container-fluid text-center text-md-left">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-1">
+            <a href="https://www.themoviedb.org" target="_blank">
             <img src="https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" height="40" weight="55" alt="Movie DB">
+            </a>
+          </div>
+            <div class="col-md-5">
             <h6 style="font-size: 8pt; ">This product uses the TMBd API but is not endorsed or certified by TMDb.</h6>
           </div>
           <div class="col-md-6">
             <h5 class="text-uppercase" style="font-size: 10pt; ">Links</h5>
             <ul class="list-unstyled" style="font-size: 8pt; ">
               <li>
-                <a href="/about" style="color: #1a1a1a">About</a>
+                <a href="/about" style="color:aliceblue">About</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer-copyright py-3 text-center margin-sm" style="background-color: #585858">
+      <div class="footer-copyright py-3 text-center margin-sm" style="background-color: #141414">
         <h6 style="font-size: 8pt; ">© 2018 Copyright: David Carr, Reid Kippenbrock, Daniel Macke</h6>
       </div>
     </footer>
