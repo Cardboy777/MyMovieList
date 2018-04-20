@@ -49,11 +49,16 @@
         <form class="form-inline" method="GET" action="{% url 'search_url' %}">
           <input type="text" class ="form-control" name="search_box" placeholder="Movie Search" />
           <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </nav>
     </div>
+    <main>
+    <div class="content">
     {% block body %}
     {% endblock %}
-    <footer class="page-footer fixed-bottom font-small blue pt-2 mt-4" style="background-color: #6e6e6e;">
+    </div>
+    </main>
+    <footer class="footer page-footer font-small blue pt-2 mt-4" style="background-color: #6e6e6e;">
       <div class="container-fluid text-center text-md-left">
         <div class="row">
           <div class="col-md-6">

@@ -5,13 +5,53 @@
 {% endblock %}
 
 {% block body %}
-  <div class=container>
+  <div class="container p-3">
     <h1 class="text-uppercase">Movies</h1>
+    <h2 class="text-md-left">  {{ title }}: </h2>
     <p>
-      {{ title }}: {{ overview }}
+      {{ overview }}
     </p>
-    <iframe width="420" height="315"
-        src="{{ trailer }}">
-    </iframe>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <u><h5 class="text-md-left"> Director </h5></u>
+          <p>
+            {{ director }}
+          </p>
+          <u><h5 class="text-md-left"> Release Date </h5></u>
+          <p>
+            {{ release_date }}
+          </p>
+        </div>
+        <div class="col-md-4">
+          <u><h5 class="text-md-left"> Companies </h5></u>
+
+            {% for company in companies %}
+              <p>
+                {{company.name}}, {{company.origin_country}}
+              </p>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+          <u><h5 class="text-md-left text-underline"> Genres </h5></u>
+          {% for genre in genres %}
+            <p>
+              {{genre.name}}
+            </p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <u><h2 class="text-md-left"> Trailer: </h2></u>
+        </div>
+        <div class="col-md-6">
+          <iframe width="420" height="315"
+              src="{{ trailer }}">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
   </div>
 {% endblock %}
