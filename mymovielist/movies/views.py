@@ -58,6 +58,8 @@ def search(request):
         return redirect('/')
 
 def write_review_view(request):
+    if not request.user.is_authenticated:
+        return redirect('/account/login/')
     if request.method == 'POST':
         form = write_review(request.POST)
         if form.is_valid():

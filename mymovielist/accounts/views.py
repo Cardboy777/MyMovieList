@@ -13,6 +13,8 @@ def home(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('/account/profile')
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -28,6 +30,8 @@ def register(request):
 
 
 def view_profile(request):
+    if not request.user.is_authenticated:
+        return redirect('/account/login')
     movie_reviews = MovieReview.objects.filter(user=request.user)
     args = {'User': request.user,'reviews': movie_reviews}
     return render(request, 'accounts/profile.html', args)

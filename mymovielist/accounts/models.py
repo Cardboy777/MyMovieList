@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 # Create your models here.
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Django Secure User")
-    description = models.CharField(max_length=100, default='Enter Something about your Movie Tastes and Background')
+    description = models.CharField(max_length=1000, default='Enter Something about your Movie Tastes and Background')
     city = models.CharField(max_length=30, default='')
     age = models.IntegerField(default=0)
 

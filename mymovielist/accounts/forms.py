@@ -60,7 +60,7 @@ class EditUserForm(UserChangeForm):
             'password'
         )
 class EditProfileForm(forms.ModelForm):
-
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows':10,'cols':60}))
     class Meta:
         model=UserProfile
         fields = (
