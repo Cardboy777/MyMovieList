@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from accounts.forms import RegistrationForm, EditProfileForm, EditUserForm
 from accounts.models import UserProfile
@@ -30,10 +30,13 @@ def register(request):
 
 
 def view_profile(request):
-    if not request.user.is_authenticated:
-        return redirect('/account/login')
-    movie_reviews = MovieReview.objects.filter(user=request.user)
-    args = {'User': request.user,'reviews': movie_reviews}
+    username = request.GET.get('p');
+    user = get_object_or_404(User,username=username)
+    editable = False
+    if request.user.is_authenticated and request.user == user:
+        editable= True
+    movie_reviews = MovieReview.objects.filter(user=user)
+    args = {'User': user,'reviews': movie_reviews,'Editable':editable}
     return render(request, 'accounts/profile.html', args)
 
 

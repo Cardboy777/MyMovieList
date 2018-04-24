@@ -57,7 +57,7 @@
             </li>
             {%else%}
             <li class="nav-item">
-              <a class="nav-link" href="/account/profile" style="color: #1c1857">Profile</a>
+              <a class="nav-link" href="/account/profile/?p={{request.user.username}}" style="color: #1c1857">Profile</a>
             </li>
             {%endif%}
           </ul>
