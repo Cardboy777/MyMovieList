@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import tmdbsimple as tmdb
 from movies.models import MovieReview
 from movies.forms import write_review
@@ -88,3 +88,25 @@ def write_review_view(request):
         movie_id = request.GET.get('movie_id')
         args = {'form':form,'id':movie_id}
         return render(request, 'movies/write_review.html',args)
+def edit_review_view(request):
+    if not request.user.is_authenticated:
+        return redirect('/account/login/')
+    if request.method == "POST":
+        review_id = request.POST.get('review_id')
+        review = get_object_or_404(MovieReview,pk=review_id)
+        form = write_review(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('/account/profile/?p='+request.user.username)
+        else:
+            args= {'form':form,'id':review_id}
+            return render(request,'movies/edit_review.html',args)
+
+    else:
+        review_id = request.GET.get('review_key')
+        review = get_object_or_404(MovieReview,pk=review_id)
+        if review.user != request.user:
+            return redirect('/')
+        form = write_review(instance=review)
+        args = {'form':form,'id': review_id}
+        return render(request,'movies/edit_review.html',args)
