@@ -3,14 +3,16 @@
 <title>Login</title>
 {%endblock%}
 {%block body%}
-<div class="container-fluid">
-  <div class="jumbotron">
-    <form method="post">
-      <h1 class="text-md-left">MyMovieList: Login</h1>
-      {% csrf_token %}
-      {{ form.as_ul }}
-      <button class="btn btn-outline-success" type="submit">Login</button>
-    </form>
+<div class="container-fluid" align="center">
+  <div class="col-md-4">
+    <div class="jumbotron text-md-center">
+      <form method="post">
+        <h2>My Movie List Login</h2>
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <button class="btn btn-outline-success" type="submit">Login</button>
+      </form>
+    </div>
   </div>
 </div>
 {%endblock%}

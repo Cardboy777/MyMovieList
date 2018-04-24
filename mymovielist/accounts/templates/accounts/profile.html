@@ -33,35 +33,41 @@
 {%block body%}
 <div class="container">
   <div class="jumbotron">
-    <h1 class="text-uppercase">
-      name
-    </h1>
-    <p style="font-size:125%;">
-      {{User.last_name}},{{User.first_name}}
-    </p>
-    <h1 class="text-uppercase">
-      Age
-    </h1>
-    <p style="font-size:125%;">
-      {{User.userprofile.age}} y/o
-    </p>
-    <h1 class="text-uppercase">
-      Location
-    </h1>
-    <p style="font-size:125%;">
-      {{User.userprofile.city}}
-    </p>
-    <h1 class="text-uppercase">
-      description
-    </h1>
-    <p style="font-size:125%;">
-      {{User.userprofile.description}}
-    </p>
-    {%if Editable%}
-    <a href="/account/profile/edit" class="btn btn-outline-success">
-      Edit profile
-    </a>
-    {%endif%}
+    <h1 class="text-uppercase">{{User.username}}'s Profile</h1>
+    <div class="col-md-4">
+
+      <h1 class="text-uppercase">
+        name
+      </h1>
+      <p style="font-size:125%;">
+        {{User.last_name}},{{User.first_name}}
+      </p>
+      <h1 class="text-uppercase">
+        Age
+      </h1>
+      <p style="font-size:125%;">
+        {{User.userprofile.age}} y/o
+      </p>
+      <h1 class="text-uppercase">
+        Location
+      </h1>
+      <p style="font-size:125%;">
+        {{User.userprofile.city}}
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h1 class="text-uppercase">
+        description
+      </h1>
+      <p style="font-size:125%;">
+        {{User.userprofile.description}}
+      </p>
+      {%if Editable%}
+      <a href="/account/profile/edit" class="btn btn-outline-success">
+        Edit profile
+      </a>
+      {%endif%}
+    </div>
   </div>
   <div class="container-fluid">
     <div class="jumbotron">
