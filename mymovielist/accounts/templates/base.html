@@ -45,17 +45,22 @@
               <a class="nav-link" href="/" style="color: #1c1857">Home</a>
             </li>
             <li class="nav-item">
+              {% if not request.user.is_authenticated %}
               <a class="nav-link" href="/account/login/" style="color: #1c1857">Login</a>
-            </li>
-            <li class="nav-item">
+              {% else %}
               <a class="nav-link" href="/account/logout/" style="color: #1c1857">Logout</a>
+              {% endif %}
             </li>
+            {% if not request.user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="/account/register" style="color: #1c1857">Register</a>
             </li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="/account/profile" style="color: #1c1857">Profile</a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
