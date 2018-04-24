@@ -55,7 +55,6 @@ def search(request):
         #print(search.results)
         final = search.results
         while x <= 5:
-            print(x)
             search.movie(query = search_query, page = x)
             #print(search.results)
             final.extend(search.results)

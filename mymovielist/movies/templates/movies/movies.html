@@ -88,7 +88,7 @@
         <div class="container-fluid" style="border:1px solid #cecece;">
           <blockquote>
             <p>{{review.review}}<p>
-            <footer> {{review.user.first_name}} {{review.user.last_name}} {{review.rating}}/100</footer>
+            <footer><a href="/account/profile/?p={{review.user.username}}">{{review.user.first_name}} {{review.user.last_name}} {{review.rating}}/100</a></footer>
           </blockquote>
         </div>
 

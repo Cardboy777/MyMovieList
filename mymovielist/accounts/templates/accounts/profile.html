@@ -57,9 +57,11 @@
     <p style="font-size:125%;">
       {{User.userprofile.description}}
     </p>
+    {%if Editable%}
     <a href="/account/profile/edit" class="btn btn-outline-success">
       Edit profile
     </a>
+    {%endif%}
   </div>
   <div class="container-fluid">
     <div class="jumbotron">
