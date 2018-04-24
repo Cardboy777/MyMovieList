@@ -74,7 +74,7 @@
       {%for review in reviews%}
       <tr>
         <td>{{review.movie_title}}</td>
-        <td>{{review.review}} <a href="T/movies/?movie_id={{review.movie_id}}">Link to Movie</a></td>
+        <td>{{review.review}} <a href="/movies/?movie_id={{review.movie_id}}">Link to Movie</a></td>
         <td>{{review.rating}}</td>
       </tr>
       {%endfor%}

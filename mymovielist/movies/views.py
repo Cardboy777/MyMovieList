@@ -30,7 +30,15 @@ def movies(request):
                 movie_director_pic = f["profile_path"]
         movie_homepage = movie_info["homepage"]
         movie_reviews =  MovieReview.objects.filter(movie_id=movie_id)
-        args = {'id':movie_id,'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
+        sum = 0;
+        count = 0;
+        for review in movie_reviews:
+            sum += review.rating
+            count += 1
+        average = 'no reviews'
+        if count > 0:
+            average = sum / count
+        args = {'average_rating': average, 'id' :movie_id, 'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
                 'companies': movie_companies, 'release_date': movie_release_date, 'trailer': movie_trailer,
                 'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,'reviews':movie_reviews,}
     return render(request, 'movies/movies.html', args)
