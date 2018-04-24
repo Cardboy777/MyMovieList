@@ -46,10 +46,7 @@
         <div class="row">
 
           <div class="col-md-4">
-            <u><h5 class="text-md-left"> MyMovieList Average Rating </h5></u>
-            <p>
-              {{ average_rating }}
-            </p>
+
             <u><h5 class="text-md-left"> Director </h5></u>
             <p>
               {{ director }}
@@ -58,7 +55,12 @@
             <p>
               {{ release_date }}
             </p>
+            <u><h5 class="text-md-left"> MyMovieList Ranking </h5></u>
+            <p>
+              {{ ranking }}
+            </p>
           </div>
+
 
           <div class="col-md-4">
             <u><h5 class="text-md-left"> Companies </h5></u>
@@ -83,7 +85,7 @@
       </div>
     </div>
     <div class="jumbotron">
-      <h5>Reviews</h5>
+      <h5>See what other MovieRankers rated this movie!</h5>
         {%for review in reviews%}
         <div class="container-fluid" style="border:1px solid #cecece;">
           <blockquote>

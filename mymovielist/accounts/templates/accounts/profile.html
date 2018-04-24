@@ -78,12 +78,14 @@
           <th onclick="sortTable(0)">Title</th>
           <th>Review</th>
           <th onclick="sortTable(2)">Rating (X/100)</th>
+          <th>Edit</th>
         </tr>
       {%for review in reviews%}
       <tr>
         <td>{{review.movie_title}}</td>
         <td>{{review.review}} <a href="/movies/?movie_id={{review.movie_id}}">Link to Movie</a></td>
         <td>{{review.rating}}</td>
+        <td><a href="/movies/edit_review/?review_key={{review.pk}}">Edit</a></td>
       </tr>
       {%endfor%}
     </table>
