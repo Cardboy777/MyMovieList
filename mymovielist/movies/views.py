@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 import tmdbsimple as tmdb
 from movies.models import MovieReview
 from movies.forms import write_review
-
+import operator
 tmdb.API_KEY = 'dd1efeb24fd2185a41514dc64bb9ac02'
 
 
@@ -38,7 +38,36 @@ def movies(request):
         average = 'no reviews'
         if count > 0:
             average = sum / count
-        args = {'average_rating': average, 'id' :movie_id, 'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
+
+        all_reviews = MovieReview.objects.all()
+        ratings = {}
+        for review in all_reviews:
+            id = review.movie_id
+            reviews = MovieReview.objects.filter(movie_id=id)
+            sum = 0
+            count = 0
+            for review in reviews:
+                sum += review.rating
+                count += 1
+            average = sum / count
+            ratings[id] = average
+
+        sorted_rankings = sorted(ratings.items(), key=operator.itemgetter(1))
+
+        sorted_rankings.reverse()
+        ranking = 'No reviews'
+        count = 1
+        for x in sorted_rankings:
+            print(movie_id)
+            print(x[0])
+
+            if x[0]==int(movie_id):
+                print("here")
+                ranking = count
+                break
+            count+=1
+
+        args = {'ranking': ranking, 'average_rating': average, 'id' :movie_id, 'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
                 'companies': movie_companies, 'release_date': movie_release_date, 'trailer': movie_trailer,
                 'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,'reviews':movie_reviews,}
     return render(request, 'movies/movies.html', args)
