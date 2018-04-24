@@ -14,7 +14,7 @@ def home(request):
 
 def register(request):
     if request.user.is_authenticated:
-        return redirect('/account/profile')
+        return redirect('/account/profile/?p='+request.user.username)
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
