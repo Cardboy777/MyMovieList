@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Django Secure User")
     description = models.CharField(max_length=1000, default='Enter Something about your Movie Tastes and Background')
-    city = models.CharField(max_length=30, default='')
+    city = models.CharField(max_length=30, default='ZA WARUDO')
     age = models.IntegerField(default=0)
 
     # reviews = models.ManyToManyField(MovieReview, verbose_name="List of Reviewed Movies")

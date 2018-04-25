@@ -109,7 +109,7 @@ def write_review_view(request):
             review.movie_title = movie_title
             review.save()
             text = form.cleaned_data['review']
-            return redirect('/account/profile/')
+            return redirect('/account/profile/?p='+request.user.username)
         args = {'form':form, 'text': text}
         return render(request,'movies/write_review.html',args)
     else:

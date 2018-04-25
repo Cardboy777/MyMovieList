@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from accounts.models import UserProfile
+from django.core.files.images import get_image_dimensions
 
 
 class RegistrationForm(UserCreationForm):
@@ -59,6 +60,7 @@ class EditUserForm(UserChangeForm):
             'email',
             'password'
         )
+
 class EditProfileForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'rows':10,'cols':60}))
     class Meta:
@@ -71,5 +73,31 @@ class EditProfileForm(forms.ModelForm):
         field_order = (
             'age',
             'city',
-            'description'
+            'description',
         )
+    def clean_avatar(self):
+        avatar=self.cleaned_data['avatar']
+
+        try:
+            w, h = get_image_dimensions(avatar)
+
+            max_width= max_height = 100
+            if w > max_width or h > max_height:
+                raise forms.ValidationError(
+                u'Please us an image that is '
+                '%s x %s pixels or smaller.' % (max_width, max_height))
+
+            #validate content type
+            main, sub = avatar.content_type.split('/')
+            if not (main == 'image' and sub in ['jpeg', 'pjpeg', 'gif', 'png']):
+                raise forms.ValidationError(u'Please use a JPEG, '
+                    'GIF or PNG image.')
+
+            #validate file size
+            if len(avatar) > (20 * 1024):
+                raise forms.ValidationError(
+                    u'Avatar file size may not exceed 20k.')
+
+        except AttributeError:
+            pass
+        return avatar
