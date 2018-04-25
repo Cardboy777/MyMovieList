@@ -38,7 +38,7 @@
           {{User.last_name}}, {{User.first_name}}
         </p>
       </div>
-      <div class="col-md-4">       
+      <div class="col-md-4">
         <u><h3 class="text-uppercase">
           Age
         </h3></u>
@@ -65,9 +65,11 @@
         </p>
       </div>
     </div>
+    {%if Editable%}
     <a href="/account/profile/edit" class="btn btn-outline-success">
       Edit profile
     </a>
+    {%endif%}
   </div>
   <div class="container-fluid">
     <div class="jumbotron" style="padding: 10px;">
@@ -78,12 +80,20 @@
           <th onclick="sortTable(0)">Title</th>
           <th>Review</th>
           <th onclick="sortTable(2)">Rating (X/100)</th>
+          {%if Editable%}
+          <th> Edit Review</th>
+          {%endif%}
         </tr>
       {%for review in reviews%}
       <tr>
         <td>{{review.movie_title}}</td>
         <td>{{review.review}} <a href="/movies/?movie_id={{review.movie_id}}">Link to Movie</a></td>
         <td>{{review.rating}}</td>
+        {%if Editable%}
+        <td><a href="/movies/edit_review/?review_key={{review.pk}}" class="btn btn-outline-success">
+          Edit
+        </a></td>
+        {%endif%}
       </tr>
       {%endfor%}
     </table>
