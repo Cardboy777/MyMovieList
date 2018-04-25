@@ -22,55 +22,55 @@
       background-color: #f2f2f2
   }
 
-  .jumbotron{
-      padding: 10px;
-  }
-
-
   </style>
 {%endblock%}
 
 {%block body%}
-<div class="container">
-  <div class="jumbotron">
-    <h1 class="text-uppercase">{{User.username}}'s Profile</h1>
-    <div class="col-md-4">
-
-      <h1 class="text-uppercase">
-        name
-      </h1>
-      <p style="font-size:125%;">
-        {{User.last_name}},{{User.first_name}}
-      </p>
-      <h1 class="text-uppercase">
-        Age
-      </h1>
-      <p style="font-size:125%;">
-        {{User.userprofile.age}} y/o
-      </p>
-      <h1 class="text-uppercase">
-        Location
-      </h1>
-      <p style="font-size:125%;">
-        {{User.userprofile.city}}
-      </p>
+<div class="container" align="center">
+  <div class="jumbotron col-md-8" align="left">
+    <b><h1 class="text-uppercase">{{ User.username }}'s Profile</h1></b>
+    <div class="row" style="padding: 10px;">
+      <div class="col-md-4">
+        <u><h3 class="text-uppercase">
+          name
+        </h3></u>
+        <p style="font-size:125%;">
+          {{User.last_name}}, {{User.first_name}}
+        </p>
+      </div>
+      <div class="col-md-4">       
+        <u><h3 class="text-uppercase">
+          Age
+        </h3></u>
+        <p style="font-size:125%;">
+          {{User.userprofile.age}} y/o
+        </p>
+      </div>
+      <div class="col-md-4">
+        <u><h3 class="text-uppercase">
+          Location
+        </h3></u>
+        <p style="font-size:125%;">
+          {{User.userprofile.city}}
+        </p>
+      </div>
     </div>
-    <div class="col-md-4">
-      <h1 class="text-uppercase">
-        description
-      </h1>
-      <p style="font-size:125%;">
-        {{User.userprofile.description}}
-      </p>
-      {%if Editable%}
-      <a href="/account/profile/edit" class="btn btn-outline-success">
-        Edit profile
-      </a>
-      {%endif%}
+    <div class="row" style="padding: 10px;">
+      <div class="col-md-8">
+        <u><h3 class="text-uppercase">
+          description
+        </h3></u>
+        <p style="font-size:125%;">
+          {{User.userprofile.description}}
+        </p>
+      </div>
     </div>
+    <a href="/account/profile/edit" class="btn btn-outline-success">
+      Edit profile
+    </a>
   </div>
   <div class="container-fluid">
-    <div class="jumbotron">
+    <div class="jumbotron" style="padding: 10px;">
       <h1 class="text-center">Reviews</h1>
       <div style="overflow-x:auto;">
       <table id="ReviewTable">
@@ -78,14 +78,12 @@
           <th onclick="sortTable(0)">Title</th>
           <th>Review</th>
           <th onclick="sortTable(2)">Rating (X/100)</th>
-          <th>Edit</th>
         </tr>
       {%for review in reviews%}
       <tr>
         <td>{{review.movie_title}}</td>
         <td>{{review.review}} <a href="/movies/?movie_id={{review.movie_id}}">Link to Movie</a></td>
         <td>{{review.rating}}</td>
-        <td><a href="/movies/edit_review/?review_key={{review.pk}}">Edit</a></td>
       </tr>
       {%endfor%}
     </table>
