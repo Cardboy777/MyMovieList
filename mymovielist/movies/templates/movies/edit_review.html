@@ -7,6 +7,7 @@
   <div class="container">
     <div class="jumbotron">
       <h1> Edit your Review </h1>
+      <p>Rating is on a scale of 0-100</p>
       <form method="post">
         {% csrf_token %}
         <input type="hidden" name=review_id value = "{{ id }}">
