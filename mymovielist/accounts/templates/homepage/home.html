@@ -23,11 +23,24 @@
             <tr>
               <th scope="row">{{movie.rank}}</th>
               <td><img src = "{{movie.poster}}" height="120px"></td>
-              <td><a href="/movies/?movie_id={{movie.id}}"><h6 class=text-md-left>{{movie.title}}</h6></a>
+              <td><a href="/movies/?movie_id={{movie.id}}"><h6 class=text-md-left>{{movie.title}}</h6></a></td>
             </tr>
             {%endfor%}
           </tbody>
         </table>
+      </div>
+      <div class="container-fluid">
+          <h5 class="text-md-left">Most Recent Reviews</h5>
+          {%for review in RecentReviews%}
+        <div class="container-fluid" style="border:1px solid #cecece;">
+          <blockquote>
+            <a href="/movies/?movie_id={{review.movie_id}}"><h6 class=text-md-left>{{review.movie_title}}</h6></a>
+            <p>{{review.review}}<p>
+            <footer><a href="/account/profile/?p={{review.user.username}}">{{review.user.first_name}} {{review.user.last_name}} {{review.rating}}/100</a></footer>
+          </blockquote>
+        </div>
+
+        {% endfor %}
       </div>
   </div>
 

@@ -38,8 +38,9 @@ def home(request):
         movie_poster = 'http://image.tmdb.org/t/p/w185/' + movie_info["poster_path"]
         top_movies.append({'id':review_id,'title':movie_title,'poster':movie_poster,'rank':count})
         count+=1
-
-    args = {'TopMovies':top_movies}
+    reverse_reviews = all_reviews
+    recent_reviews = reverse_reviews[:3]
+    args = {'TopMovies':top_movies,'RecentReviews':recent_reviews}
     return render(request, 'homepage/home.html',args)
 
 def guccigang(request):
