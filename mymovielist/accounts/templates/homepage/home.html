@@ -1,13 +1,37 @@
 {%extends 'base.html'%}
 {%block body%}
-  <div class="container-fluid">
-    <div class="jumbotron">
+  <div class="container-fluid" align="center">
+    <div class="jumbotron text-left col-md-8">
       {% load static %}
-      <image src="{% static 'images/logo.png' %}"/>
-      <h1>Welcome to My Movie List</h1>
-      <p>For new users make sure to begin by making an account by clicking the Register button in the banner above</p>
-      <p>For returning users make sure to sign in to your account by clicking the Login button in the banner above</p>
-      <p> Begin using the search bar to search for Movies to rate and review</p>
+      <div class="text-center">
+        <image src="{% static 'images/titlebanner.png' %}" align="center" height="60px"/>
+      </div>
+      <h2>Welcome</h2>
+      <p>MyMovieList is a site dedicated to helping users keep track of, and score their favorite movies and films.</p>
+      <h2>Getting Started</h2>
+      <p>For new users make sure to 
+        <a href="/account/register">
+        register
+        </a> an account before you start creating your Movie List.</p>
+      <p>For returning users make sure to 
+        <a href="/account/login/">
+        sign in
+        </a>
+        to your account.</p>
+      <p>Edit your infomation on your 
+        
+        {%if not request.user.is_authenticated %}
+        <a href="/account/login">
+          Profile
+        </a>
+        {%else%}
+        <a href="/account/profile/?p={{request.user.username}}">
+          Profile
+        </a>
+        {%endif%}
+        
+        page.</p>
+      <p>Get started by seaching for a movie!</p>
       <h5 class="text-md-left">Top Films on MyMovieList</h5>
       <div class="container-fluid">
         <table class="table">
