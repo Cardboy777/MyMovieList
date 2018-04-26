@@ -10,16 +10,23 @@ def movies(request):
     movie_id = request.GET.get('movie_id')
     movie = tmdb.Movies(movie_id)
     if(movie_id):
+        #Get Movie Information
         movie_info = movie.info()
         movie_title = movie_info["title"]
         movie_poster = 'http://image.tmdb.org/t/p/w185/' + movie_info["poster_path"]
         movie_overview = movie_info["overview"]
         movie_genres = movie_info["genres"]
+        movie_genres = movie_genres[:3]
         movie_companies = movie_info["production_companies"]
+        movie_companies = movie_companies[:2]
         movie_release_date = movie_info["release_date"]
         movie_trailer = ""
         movie_director = ""
         movie_director_pic = ""
+        movie_homepage = movie_info["homepage"]
+        movie_released = movie_info["status"]
+        top_billed_actors = movie.credits()["cast"]
+        top_billed_actors = top_billed_actors[:5]
         for f in movie.videos()["results"]:
             if (f["site"] == "YouTube" and f["type"] == "Trailer"):
                 movie_trailer = "https://youtube.com/embed/" + f["key"]
@@ -28,7 +35,6 @@ def movies(request):
             if f["job"] == "Director" :
                 movie_director = f["name"]
                 movie_director_pic = f["profile_path"]
-        movie_homepage = movie_info["homepage"]
         movie_reviews =  MovieReview.objects.filter(movie_id=movie_id)
         sum = 0;
         count = 0;
@@ -66,8 +72,12 @@ def movies(request):
                 ranking = count
                 break
             count+=1
-
-        args = {'ranking': ranking, 'average_rating': average, 'id' :movie_id, 'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
+        print(movie_released)
+        if movie_released == "released":
+            movie_released = True
+        else:
+            movie_released = False
+        args = {'status': movie_released, 'cast': top_billed_actors, 'ranking': ranking, 'average_rating': average, 'id' :movie_id, 'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
                 'companies': movie_companies, 'release_date': movie_release_date, 'trailer': movie_trailer,
                 'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,'reviews':movie_reviews,}
     return render(request, 'movies/movies.html', args)
