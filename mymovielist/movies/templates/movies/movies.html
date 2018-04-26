@@ -85,7 +85,12 @@
       </div>
     </div>
     <div class="jumbotron">
+          <h5> Write your own review of this movie!</h5>
+          <a href="/movies/write_review/?movie_id={{ id }}" class="btn btn-primary btn-lg btn-block">Write a Review</a>
+    </div>
+    <div class="jumbotron">
       <h5>See what other MovieRankers rated this movie!</h5>
+        {%if reviews%}
         {%for review in reviews%}
         <div class="container-fluid" style="border:1px solid #cecece;">
           <blockquote>
@@ -95,7 +100,9 @@
         </div>
 
         {% endfor %}
-        <a href="/movies/write_review/?movie_id={{ id }}" class="btn btn-primary btn-lg btn-block">Write a Review</a>
+        {% else %}
+        <h6>No reviews written</h6>
+        {% endif %}
 
     </div>
 
