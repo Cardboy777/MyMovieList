@@ -35,6 +35,9 @@ def movies(request):
             if f["job"] == "Director" :
                 movie_director = f["name"]
                 movie_director_pic = f["profile_path"]
+
+
+        #Get Reviews for movie and calculate movie_rank
         movie_reviews =  MovieReview.objects.filter(movie_id=movie_id)
         sum = 0;
         count = 0;
@@ -57,26 +60,24 @@ def movies(request):
                 count += 1
             average = sum / count
             ratings[id] = average
-
         sorted_rankings = sorted(ratings.items(), key=operator.itemgetter(1))
-
         sorted_rankings.reverse()
         ranking = 'No reviews'
         count = 1
         for x in sorted_rankings:
-            print(movie_id)
-            print(x[0])
-
             if x[0]==int(movie_id):
                 print("here")
                 ranking = count
                 break
             count+=1
-        print(movie_released)
+
+        #Check if movie released
         if movie_released == "released":
             movie_released = True
         else:
             movie_released = False
+
+
         args = {'status': movie_released, 'cast': top_billed_actors, 'ranking': ranking, 'average_rating': average, 'id' :movie_id, 'title': movie_title, 'poster': movie_poster, 'overview': movie_overview, 'genres': movie_genres,
                 'companies': movie_companies, 'release_date': movie_release_date, 'trailer': movie_trailer,
                 'homepage': movie_homepage, 'director':movie_director, 'director_pic':movie_director_pic,'reviews':movie_reviews,}
