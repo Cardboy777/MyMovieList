@@ -8,7 +8,27 @@
       <p>For new users make sure to begin by making an account by clicking the Register button in the banner above</p>
       <p>For returning users make sure to sign in to your account by clicking the Login button in the banner above</p>
       <p> Begin using the search bar to search for Movies to rate and review</p>
-    </div>
+      <h5 class="text-md-left">Top Films on MyMovieList</h5>
+      <div class="container-fluid">
+        <table class="table">
+          <thread>
+            <tr>
+              <th scope = "col">Ranks</th>
+              <th scope = "col">Poster</th>
+              <th scope = "col">Title</th>
+            </tr>
+          </thread>
+          <tbody>
+            {%for movie in TopMovies%}
+            <tr>
+              <th scope="row">{{movie.rank}}</th>
+              <td><img src = "{{movie.poster}}" height="120px"></td>
+              <td><a href="/movies/?movie_id={{movie.id}}"><h6 class=text-md-left>{{movie.title}}</h6></a>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
   </div>
 
 {%endblock%}

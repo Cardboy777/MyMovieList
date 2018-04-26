@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dror&72(3wiufty!8ihxi*8g1%u0tygm5$2g=wqjz*da5wuap$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-SECURE_SSL_REDIRECT = True
-ALLOWED_HOSTS = ['dcmacke.pythonanywhere.com']
+DEBUG = True
+#SECURE_SSL_REDIRECT = True
+ALLOWED_HOSTS = ['dcmacke.pythonanywhere.com','localhost']
 
 
 # Application definition
