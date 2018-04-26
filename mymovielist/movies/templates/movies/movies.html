@@ -70,41 +70,54 @@
                   {{company.name}}, {{company.origin_country}}
                 </p>
               {% endfor %}
+
+              <u><h5 class="text-md-left text-underline"> Genres </h5></u>
+              {% for genre in genres %}
+                <p>
+                  {{genre.name}}
+                </p>
+              {% endfor %}
+
+
           </div>
 
+
           <div class="col-md-4">
-            <u><h5 class="text-md-left text-underline"> Genres </h5></u>
-            {% for genre in genres %}
-              <p>
-                {{genre.name}}
-              </p>
-            {% endfor %}
+            <u><h5 class="text-md-left"> Cast </h5></u>
+
+              {% for actor in cast %}
+                <p>
+                  {{actor.name}} as {{actor.character}}
+                </p>
+              {% endfor %}
+
           </div>
 
         </div>
       </div>
     </div>
+    {%if status%}
     <div class="jumbotron">
           <h5> Write your own review of this movie!</h5>
           <a href="/movies/write_review/?movie_id={{ id }}" class="btn btn-primary btn-lg btn-block">Write a Review</a>
-    </div>
-    <div class="jumbotron">
-      <h5>See what other MovieRankers rated this movie!</h5>
-        {%if reviews%}
-        {%for review in reviews%}
-        <div class="container-fluid" style="border:1px solid #cecece;">
-          <blockquote>
-            <p>{{review.review}}<p>
-            <footer><a href="/account/profile/?p={{review.user.username}}">{{review.user.first_name}} {{review.user.last_name}} {{review.rating}}/100</a></footer>
-          </blockquote>
-        </div>
+    </div>  
+      <div class="jumbotron">
+        <h5>See what other MovieRankers rated this movie!</h5>
+          {%if reviews%}
+          {%for review in reviews%}
+          <div class="container-fluid" style="border:1px solid #cecece;">
+            <blockquote>
+              <p>{{review.review}}<p>
+              <footer><a href="/account/profile/?p={{review.user.username}}">{{review.user.first_name}} {{review.user.last_name}} {{review.rating}}/100</a></footer>
+            </blockquote>
+          </div>
 
-        {% endfor %}
-        {% else %}
-        <h6>No reviews written</h6>
-        {% endif %}
+          {% endfor %}
+          {% else %}
+          <h6>No reviews written</h6>
+          {% endif %}
 
-    </div>
-
+      </div>
+    {% endif %}
   </div>
 {% endblock %}
