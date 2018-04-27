@@ -28,26 +28,26 @@
 {%block body%}
 <div class="container" align="center">
   <div class="jumbotron col-md-8" align="left">
-    <b><h1 class="text-uppercase">{{ User.username }}'s Profile</h1></b>
+    <b><h1>{{ User.username }}'s Profile</h1></b>
     <div class="row" style="padding: 10px;">
       <div class="col-md-4">
-        <u><h3 class="text-uppercase">
-          name
+        <u><h3>
+          Name
         </h3></u>
         <p style="font-size:125%;">
           {{User.last_name}}, {{User.first_name}}
         </p>
       </div>
       <div class="col-md-4">
-        <u><h3 class="text-uppercase">
+        <u><h3>
           Age
         </h3></u>
-        <p style="font-size:125%;">
-          {{User.userprofile.age}}
+        <p  style="font-size:125%;">
+             {{User.userprofile.age}}
         </p>
       </div>
       <div class="col-md-4">
-        <u><h3 class="text-uppercase">
+        <u><h3>
           Location
         </h3></u>
         <p style="font-size:125%;">
@@ -57,8 +57,8 @@
     </div>
     <div class="row" style="padding: 10px;">
       <div class="col-md-8">
-        <u><h3 class="text-uppercase">
-          description
+        <u><h3>
+          Description
         </h3></u>
         <p style="font-size:125%;">
           {{User.userprofile.description}}

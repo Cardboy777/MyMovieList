@@ -28,8 +28,12 @@
           </div>
 
           <div class="col-md-8 text-center">
+             {%if trailer%}
             <iframe height="300" width="420" src="{{ trailer }}">
             </iframe>
+            {%else%}
+            <h5>No Trailer Available</h5>
+            {%endif%}
           </div>
         </div>
 
@@ -96,11 +100,10 @@
         </div>
       </div>
     </div>
-    {%if status%}
     <div class="jumbotron">
           <h5> Write your own review of this movie!</h5>
           <a href="/movies/write_review/?movie_id={{ id }}" class="btn btn-primary btn-lg btn-block">Write a Review</a>
-    </div>  
+    </div>
       <div class="jumbotron">
         <h5>See what other MovieRankers rated this movie!</h5>
           {%if reviews%}
@@ -118,6 +121,5 @@
           {% endif %}
 
       </div>
-    {% endif %}
   </div>
 {% endblock %}
